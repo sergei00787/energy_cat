@@ -1,0 +1,39 @@
+.result {
+  width: 100%;
+  min-width: 165px;
+  min-height: 75px;
+  border: 2px solid $border-color;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.result__text {
+  font-size: 1.8rem;
+}
+
+.result__under-text {
+  position: absolute;
+  bottom:-12px;
+  z-index: 1;
+  width: 130px;
+  margin: 0 auto;
+  text-align: center;
+  @include primary-text;
+  font-size: 0.8rem;
+  background-color: $bg-box-color;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) { 
+  .result__under-text {
+    background-color: white;
+  }
+}
+
+@media (max-width: 768px) {
+  .result {
+    margin: 10px 0;
+  }
+}

@@ -1,0 +1,24 @@
+.button {   
+  width: 250px;
+  cursor: pointer;
+  background-color: $primary-color;
+  font-size: 1.1rem; 
+  padding: 10px 5px;  
+  text-align: center;
+  text-transform: uppercase;
+  color: white;
+  text-decoration: none;
+  border: none;
+}
+
+.button:hover {
+  background-color: $btn-hvr-color;
+}
+
+.button:active {
+  color: $btn-active-text-color;
+}
+
+.button:focus {
+  border: none;
+}

@@ -1,0 +1,43 @@
+@import "./advantage.scss";
+
+.advantages {
+  margin-top: 85px;
+}
+
+.advantages__list {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+.advanteges__title {
+  margin-left: 40px;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .advantages {
+    margin-right: 0;
+    margin-left: 0;
+    margin-top: 60px;
+  }
+
+  .advantages__list {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .advantages {
+    margin-top: 40px;
+  }
+
+  .advantages__list {
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+}

@@ -1,0 +1,22 @@
+.results {
+  
+}
+
+.results__list {
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+
+.results__item {
+  margin: 0 40px 0 0px ;
+}
+
+@media (max-width: 768px) {
+  .results__list {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content:space-between;
+  }
+}

@@ -1,0 +1,124 @@
+.footer {
+  height: 150px;
+  width: 100%;
+  background-color: $bg-box-color;
+}
+
+.footer__wrap {
+  height: 100%;
+  margin: 0 auto ;
+  max-width: 1300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__company {
+  margin: auto 40px;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.footer__company:hover {
+  opacity: 0.7;
+}
+
+.footer__company:active {
+  opacity: 0.5;
+}
+
+.company__name {
+  font-weight: bold;
+}
+
+.footer__socials {
+  margin: 0 40px;
+}
+
+.socials {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.socials__item {
+  margin: 20px;
+}
+
+.socials__item-link {
+  text-decoration: none;
+  color:$border-dark-color;
+}
+
+.socials__item-link:hover {
+  color: $btn-active-text-color;
+}
+
+.socials__item-link:active {
+  opacity: $opacity-hover;
+}
+
+.footer__developers-info {
+  margin: 0 40px;
+}
+
+.developers-info{
+  color: $border-dark-color;
+}
+
+.developers-info__github-link {
+  text-decoration: none;
+  color: $border-dark-color;
+}
+
+.developers-info__github-link:hover {
+  opacity: $opacity-hover;
+}
+
+.developers-info__github-link:active {
+  opacity: $opacity-active;
+}
+
+@media (max-width: 768px) {
+
+  .footer {
+    height: 250px;
+  }
+
+  .footer__wrap{
+  padding: 20px;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  }
+
+  .footer__company{
+    margin: 0;
+    flex:0 0 30%;
+    display: block;
+    width: 80%;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom:1px solid $border-dark-color;
+  }
+
+  .footer__socials{
+    flex: 0 0 30%;
+    margin: 0;
+    width: 80%;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom:1px solid $border-dark-color;
+  }
+
+  .footer__developers-info {
+    padding-top: 10px;
+    flex: 1 1 40%;
+    margin: 0;
+  }
+
+}

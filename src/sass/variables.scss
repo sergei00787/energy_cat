@@ -1,0 +1,35 @@
+$primary-color: #65a93c;
+$btn-hvr-color: #5eaa2f;
+$btn-active-text-color: #81bd5d;
+
+$text-color-light: white;
+$text-color-dark: black;
+$bg-box-color: #f2f2f2;
+$border-color: #cdcdcd;
+$border-dark-color: #989898;
+$control-color: #dcdcdc;
+
+$out-margin: 0 40px;
+$element-margin: 0 40px;
+$element-padding: 0 40px;
+
+$opacity-hover: 0.7;
+$opacity-active:0.5;
+
+$conteiner-size-desktop: 1300px;
+$conteiner-size-tablet: auto;
+$conteiner-size-mobile: auto;
+
+@mixin primary-text {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 24px;  
+}
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}

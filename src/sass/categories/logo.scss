@@ -1,0 +1,44 @@
+.img-round {
+  height: 100px;
+  width: 100px;  
+  border-radius: 50px;
+  background-color: $primary-color;
+}
+
+.img-cat {
+  position: absolute; 
+  display: block;  
+}
+
+.catslim-img {
+  width: 100px;
+  height: 100px;
+  top:0px; 
+  background: url("/img/cat-slim.svg") no-repeat center center;
+}
+
+.catpro-img {
+  width: 140px;
+  height: 100px;
+  top:0px;
+  left: -20px;
+  background: url("/img/cat-pro.svg") no-repeat center center;
+}
+
+@media (min-width: 768px) and (max-width: 1024px)  {
+  .img-round {
+    margin: 50% 0;
+    height: 22vw;
+    width: 22vw;
+    border-radius: 50%;
+    background-color: $primary-color;
+  }
+
+  .img-cat {
+    position: absolute; 
+    height: 50vw;
+    width: 50vw;
+    display: block;
+    margin: 50% 0;
+  }
+}

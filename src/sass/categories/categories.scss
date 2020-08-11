@@ -1,0 +1,45 @@
+@import "./category.scss";
+@import "./logo.scss";
+
+.categories {
+  margin-top: 80px;
+  min-height: 372px;
+}
+
+.categories__list {
+  margin: 0 70px 0 70px;
+  min-height: 372px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 768px) and (max-width: 1024px)  {
+  .categories {
+    margin-top: 50px;
+    min-height: auto;
+  }
+
+  .categories__list {
+    margin: 0;
+    min-height: 372px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: no-wrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .categories {
+    margin-top: 50px;
+    min-height: auto;
+  }
+
+  .categories__list {
+    margin: 0;
+    min-height: 360px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: no-wrap;
+  }
+}
