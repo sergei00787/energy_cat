@@ -313,7 +313,7 @@ body {
   width: 30px;
   height: 16px;
   margin-left: 20px;
-  background: url("./img/right-arrow-long.svg") no-repeat center center; }
+  background: url("/img/right-arrow-long.svg") no-repeat center center; }
 
 .category__picture {
   display: block;
