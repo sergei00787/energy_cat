@@ -8,7 +8,12 @@
     "dev": "cross-env NODE_ENV=development webpack --mode development",
     "build": "cross-env NODE_ENV=production webpack --mode production",
     "watch": "cross-env NODE_ENV=development webpack --mode development --watch --watch-poll --progress --hide-modules",
-    "start": "cross-env NODE_ENV=development webpack-dev-server --mode development --open"
+    "start": "cross-env NODE_ENV=development webpack-dev-server --mode development --open",
+    "deploy": "cross-env NODE_ENV=production gh-pages -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sergei00787/energy_cat"
   },
   "author": "Buymov Sergey",
   "license": "MIT",
@@ -28,6 +33,7 @@
     "eslint-loader": "^4.0.2",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^6.0.0",
+    "gh-pages": "^3.1.0",
     "html-webpack-plugin": "^4.3.0",
     "image-webpack-loader": "^6.0.0",
     "less-loader": "^6.1.0",
