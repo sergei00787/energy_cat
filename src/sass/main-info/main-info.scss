@@ -33,7 +33,7 @@
   min-height: 100%;
   flex: 0 0 50%;
   min-width: 350px;
-  background: url("/img/index-background-desktop.png") top right / cover no-repeat;
+  background: url("/../../img/index-background-desktop.png") top right / cover no-repeat;
 }
 
 .main-info__image {
@@ -92,7 +92,7 @@
     margin: 20px 0;
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: stretch;
     z-index: 3;
     padding: 0;

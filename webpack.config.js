@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const autoprefixer = require('autoprefixer');
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const CssUrlRelativePlugin = require('css-url-relative-plugin')
 
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
@@ -45,19 +45,22 @@ const cssLoaders = (p_exrta) => {
       options: {
          hmr: isDev,
          reloadAll: true,
-        //  publicPath: path.resolve(__dirname,'./dist/css/'),
       },
     },
+    // 'style-loader',
     'css-loader',
+    // {
+    //   loader: 'postcss-loader',
+    //   options: {
+    //       plugins: [
+    //           autoprefixer({})
+    //       ],
+    //   }
+    // },
     {
-      loader: 'postcss-loader',
+      loader: 'resolve-url-loader',
       options: {
-          plugins: [
-              autoprefixer({
-                  browsers:['ie >= 8', 'last 4 version']
-              })
-          ],
-          sourceMap: true
+        sourceMap: true,
       }
     },
   ]
@@ -70,9 +73,6 @@ const cssLoaders = (p_exrta) => {
 }
 
 module.exports = {
-  // context: path.resolve(__dirname, 'src'),
-  mode: 'development',
-
   entry: {
     main: ['@babel/polyfill','./src/js/index.js']
   },
@@ -80,6 +80,7 @@ module.exports = {
   output: {
     filename: filename('js'),
     path: path.resolve(__dirname, 'dist'),
+    // publicPath: "/dist/",
   },
 
   optimization: optimization(),
@@ -88,7 +89,8 @@ module.exports = {
 
   resolve: {
     alias: {
-      root: path.resolve(__dirname, 'src')
+      root: path.resolve(__dirname, 'src'),
+      img: path.resolve(__dirname, "img")
     }
   },
 
@@ -146,26 +148,25 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/,
-        use: cssLoaders('sass-loader')
+        use: cssLoaders('sass-loader?sourceMap')
       },
       {
         test: /\.less$/,
         use: cssLoaders('less-loader')
       },
+
       {
         test: /\.(png|jpg|gif|ico|svg)$/,
         use: [
-          'file-loader?name=./img/[name].[ext]',
+          'file-loader?name=img/[name].[ext]',
           {
             loader: 'image-webpack-loader',
-            options: {
-              outputPath: 'img'
-            }
+            options: {}
           },
         ]
       },
+
       {
-        // test: /\.(ttf|woff|woff2|eot)$/,
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
         use: [
           'file-loader?name=fonts/[name].[ext]',
@@ -208,6 +209,7 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: filename('[name].css'),
+      chunkFilename: "[id].css"
     }),
     
   ],

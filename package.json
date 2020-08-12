@@ -24,6 +24,7 @@
     "copy-webpack-plugin": "^6.0.1",
     "cross-env": "^7.0.2",
     "css-loader": "^3.5.3",
+    "css-url-relative-plugin": "^1.0.0",
     "eslint-loader": "^4.0.2",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^6.0.0",
@@ -34,10 +35,12 @@
     "node-sass": "^4.14.1",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-loader": "^3.0.0",
+    "resolve-url-loader": "^3.1.1",
     "sass": "^1.26.8",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.2.1",
     "terser-webpack-plugin": "^3.0.3",
+    "url-loader": "^4.1.0",
     "webpack": "^4.43.0",
     "webpack-bundle-analyzer": "^3.8.0",
     "webpack-cli": "^3.3.11",
@@ -48,6 +51,5 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "save-dev": "0.0.1-security"
-  },
-  "overrideBrowserslist": "last 2 versions"
+  }
 }
