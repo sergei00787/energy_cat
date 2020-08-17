@@ -1,12 +1,13 @@
 const path = require('path');
-const HTMLWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const autoprefixer = require('autoprefixer');
-const CssUrlRelativePlugin = require('css-url-relative-plugin')
+const webpack = require('webpack');
+
 
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
@@ -43,11 +44,10 @@ const cssLoaders = (p_exrta) => {
     {
       loader: MiniCssExtractPlugin.loader,
       options: {
-         hmr: isDev,
-         reloadAll: true,
+        hmr: isDev,
+        reloadAll: true,
       },
     },
-    // 'style-loader',
     'css-loader',
     // {
     //   loader: 'postcss-loader',
@@ -57,12 +57,6 @@ const cssLoaders = (p_exrta) => {
     //       ],
     //   }
     // },
-    {
-      loader: 'resolve-url-loader',
-      options: {
-        sourceMap: true,
-      }
-    },
   ]
 
   if (p_exrta) {
@@ -74,13 +68,12 @@ const cssLoaders = (p_exrta) => {
 
 module.exports = {
   entry: {
-    main: ['@babel/polyfill','./src/js/index.js']
+    main: ['@babel/polyfill', './src/js/index.js']
   },
 
   output: {
     filename: filename('js'),
     path: path.resolve(__dirname, 'dist'),
-    // publicPath: "/dist/",
   },
 
   optimization: optimization(),
@@ -105,7 +98,7 @@ module.exports = {
             presets: ['@babel/preset-env'],
             plugins: ['@babel/plugin-proposal-class-properties'],
           }
-        }  
+        }
       },
 
       {
@@ -116,13 +109,13 @@ module.exports = {
           options: {
             presets: [
               '@babel/preset-env',
-              '@babel/preset-typescript'  
+              '@babel/preset-typescript'
             ],
             plugins: [
               '@babel/plugin-proposal-class-properties'
             ],
           }
-        }  
+        }
       },
 
       {
@@ -133,22 +126,35 @@ module.exports = {
           options: {
             presets: [
               '@babel/preset-env',
-              '@babel/preset-react'  
+              '@babel/preset-react'
             ],
             plugins: [
               '@babel/plugin-proposal-class-properties'
             ],
           }
-        }  
+        }
       },
 
+
       {
-        test: /\.css$/,
-        use: cssLoaders(),
-      },
-      {
-        test: /\.s[ac]ss$/,
-        use: cssLoaders('sass-loader?sourceMap')
+        test: /\.s(a|c)ss$/,
+        loader: [
+          MiniCssExtractPlugin.loader,
+          //  isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
+          {
+            loader: 'resolve-url-loader',
+            options: {
+              sourceMap: true,
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+            }
+          }
+        ]
       },
       {
         test: /\.less$/,
@@ -156,9 +162,15 @@ module.exports = {
       },
 
       {
-        test: /\.(png|jpg|gif|ico|svg)$/,
+        test: /\.(png|jpe?g|gif|ico|svg)$/i,
         use: [
-          'file-loader?name=img/[name].[ext]',
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'img',
+            }
+          },
           {
             loader: 'image-webpack-loader',
             options: {}
@@ -167,9 +179,8 @@ module.exports = {
       },
 
       {
-        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
         use: [
-          'file-loader?name=fonts/[name].[ext]',
           {
             loader: 'file-loader',
             options: {
@@ -179,7 +190,6 @@ module.exports = {
             }
           },
         ]
-        // loader: 'file-loader'
       }
     ]
   },
@@ -191,14 +201,17 @@ module.exports = {
     hot: isDev
   },
 
-  plugins: [  
-    new CleanWebpackPlugin(),  
-    new HTMLWebpackPlugin({
+  plugins: [
+    new CleanWebpackPlugin(),
+
+    new HtmlWebpackPlugin({
       template: './src/index.html',
+      filename: 'index.html',     
       minify: {
         collapseWhitespace: isProd
       }
     }),
+
     new CopyWebpackPlugin({
       patterns: [
         {
@@ -209,9 +222,12 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: filename('[name].css'),
-      chunkFilename: "[id].css"
+      chunkFilename: isDev ? "[id].css" : "[id].[hash].css"
     }),
-    
+
+    new webpack.DefinePlugin({
+      'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+    })
   ],
 
 

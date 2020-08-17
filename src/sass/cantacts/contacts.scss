@@ -10,18 +10,18 @@
 }
 
 .contacts__conteiner {
-  width: $conteiner-size-desktop;
+  width: 520px;
   height: 100%;
-  margin: 0 auto;
+  transform: translate(-250px, 0);
   z-index: 2;
 }
 
 .contacts__info-wrap {
-  width: 40%;
+  width: 100%;
 }
 
 .contacts__info {
-  margin: 0 40px 0 40px;
+  margin: 0 50px 0 50px;
 }
 
 .contacts-info {
