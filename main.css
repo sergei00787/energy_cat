@@ -47,7 +47,7 @@ table {
 /**************RESET CSS****************/
 @font-face {
   font-family: "Oswald-Regular";
-  src: url("/src/fonts/Oswald-Regular.ttf"); }
+  src: url(fonts/Oswald-Regular.ttf); }
 
 .unvisible {
   display: none; }
@@ -313,7 +313,7 @@ body {
   width: 30px;
   height: 16px;
   margin-left: 20px;
-  background: url("/img/right-arrow-long.svg") no-repeat center center; }
+  background: url(img/right-arrow-long.svg) no-repeat center center; }
 
 .category__picture {
   display: block;
@@ -679,7 +679,7 @@ body {
   border-radius: 16px;
   height: 33px;
   width: 33px;
-  background: url("/img/slider_control_dot.png") center center no-repeat, #FFFFFF;
+  background: url(img/slider_control_dot.png) center center no-repeat, #FFFFFF;
   cursor: pointer;
   margin-top: -12.5px; }
 
@@ -880,7 +880,7 @@ body {
   border-radius: 16px;
   height: 33px;
   width: 33px;
-  background: url("/img/slider_control_dot.png") center center no-repeat, #FFFFFF;
+  background: url(img/slider_control_dot.png) center center no-repeat, #FFFFFF;
   cursor: pointer;
   margin-top: -12.5px; }
 
@@ -1057,16 +1057,16 @@ body {
   align-items: center; }
 
 .contacts__conteiner {
-  width: 1300px;
+  width: 520px;
   height: 100%;
-  margin: 0 auto;
+  transform: translate(-250px, 0);
   z-index: 2; }
 
 .contacts__info-wrap {
-  width: 40%; }
+  width: 100%; }
 
 .contacts__info {
-  margin: 0 40px 0 40px; }
+  margin: 0 50px 0 50px; }
 
 .contacts-info {
   padding: 40px;
@@ -1291,7 +1291,7 @@ body {
   min-height: 100%;
   flex: 0 0 50%;
   min-width: 350px;
-  background: url("/../../img/index-background-desktop.png") top right/cover no-repeat; }
+  background: url(img/index-background-desktop.png) top right/cover no-repeat; }
 
 .main-info__image {
   width: 40%;
