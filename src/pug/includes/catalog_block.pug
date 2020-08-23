@@ -1,0 +1,56 @@
+mixin card_param(name, value)
+  .card__param.d-flex.flex-row.justify-content-between.mt-1.pb-2.border-sm.border-bottom
+    .card__param-name= name
+    .card__param-value= value
+
+mixin card_image(card_name, img_url)
+  .card__image.d-flex.flex-column.justify-content-end.align-items-center
+    img.card__image-pic(src= img_url, alt= card_name)
+
+mixin card__info(card_name, card_params)
+  .card__info.w-75
+    h5.h5.card__name.font-weight-bold.text-center.text-uppercase= card_name
+    .card__params.d-flex.flex-column
+      each val, key in card_params
+        +card_param(key, val)
+
+mixin card(card_name, img_url, card_params)
+  li.catalog__item.container-md.col-lg-3.col-md-6.px-0.row.mt-3
+    .catalog__card
+      +card_image(card_name, img_url)
+      .card__wrap
+        .card__box.d-flext.flex-column.justify-content-between.align-items-center
+          .card__body.container.d-flex.flex-sm-row.flex-md-column.justify-content-center.align-items-center
+            +card__info(card_name, card_params)
+          .card__button-wrap.container.mb-3
+            .card__button.d-block.mx-auto.btn.btn-success.w-75.mt-3.text-uppercase заказать
+
+mixin card-more(card_name, param)
+  li.catalog__item.container-md.col-lg-3.col-md-6.px-0.row.mt-3
+    .catalog__card.d-flex.flex-column.justify-content-center.align-items-center
+      .card-more__image.d-flex.flex-column.justify-content-end.align-items-center
+        span +
+      .card-more__wrap.d-flex.flex-column.justify-content-between    
+        .card-more__body.container.d-flex.flex-sm-row.flex-md-column.justify-content-center.align-items-center
+          .card-more__info.w-75
+            h5.h5.card__name.font-weight-bold.text-center.text-uppercase= card_name
+            .card-more__params.text-center.d-flex.flex-column.justify-content-center.align-items-center
+              span= param
+        .card-more__button-wrap.container.mb-3
+          .card-more__button.d-block.mx-auto.btn.btn-light.w-75.mt-3.text-uppercase Показать все
+
+section.catalog.container.mx-auto.row.my-md-4.py-3
+  .catalog__wrap.container-md.d-flex.flex-column.justify-content-center.align-items-center
+    .catalog__title.container
+      h3.h3.catalog__title-text.title  Каталог продукции
+    ul.catalog__list.mt-5.row.text-center
+      +card('cat energy pro 500г', './img/catalog-1-desktop.png',{'Объем':'500г', 'Вкус':'Курица', 'Цена':'700р', 'sdf':'1000р'})
+      +card('cat energy pro 1000г', './img/catalog-2-desktop.png',{'Объем':'1000г', 'Вкус':'Курица', 'Цена':'1000р'})
+      +card('cat energy pro 500г', './img/catalog-3-desktop.png',{'Объем':'500г', 'Вкус':'Рыба', 'Цена':'700р'})
+      +card('cat energy pro 1000г', './img/catalog-4-desktop.png',{'Объем':'1000г', 'Вкус':'Рыба', 'Цена':'1000р'})
+      +card('cat energy slim 500г', './img/catalog-5-desktop.png',{'Объем':'500г', 'Вкус':'Гречка', 'Цена':'400р'})
+      +card('cat energy slim 1000г', './img/catalog-6-desktop.png',{'Объем':'1000г', 'Вкус':'Гречка', 'Цена':'700р'})
+      +card('cat energy slim 500г', './img/catalog-7-desktop.png',{'Объем':'500г', 'Вкус':'Рис', 'Цена':'500р'})
+      +card-more('Показать еще 100500 вкусов', 'На самом деле фкусов гораздо больше!')
+
+

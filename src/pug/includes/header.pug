@@ -1,0 +1,17 @@
+header.header
+  .conteiner
+    .header__body
+      h1.unvisible
+        | Компания CAT ENERGY - функциональное питание для котов, производство и реализация
+      a.header__logo(href="index.html")
+        img.logo(src= "./img/logo-cat-energy.svg" alt="logo cat energy")
+      i.nav__burger.fa.fa-bars.fa-2x(aria-hidden="true")
+      i.nav__close.fa.fa-times.fa-2x.unvisible(aria-hidden="true")
+      nav.header__nav.nav.nav_unvis
+        ul.nav__list.nav__list_dark
+          li.nav__item(tabindex="1")
+            a.nav__link(href="index.html") главная
+          li.nav__item.nav__item_active(tabindex="2")
+            a.nav__link(href="catalog.html") каталог продукции
+          li.nav__item(tabindex="3")
+            a.nav__link(href="index.html") подбор программы

@@ -1,0 +1,24 @@
+extends ../layout/base.pug
+  
+block pagetitle
+  title Catalog
+
+block site_scripts
+
+block page_scripts
+  include ../includes/bootstrap_scripts.pug
+  <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=aada00ec-c4ba-485c-8e2d-a9ccd57106d7" type="text/javascript"></script>
+
+block header
+  include ../includes/header.pug
+
+block footer
+  include ../includes/footer.pug
+
+block site_scripts
+  <script src="https://use.fontawesome.com/4ab99124ec.js"></script>
+
+block content
+  include ../includes/catalog_block.pug
+  include ../includes/otherproducts_block.pug
+  include ../includes/contacts_block.pug

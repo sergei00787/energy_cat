@@ -9,6 +9,7 @@ import '../fonts/Oswald-SemiBold.ttf';
 
 import './nav.js';
 import './map.js';
+import './catalog.js';
 
 const cc = {};
 

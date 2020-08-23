@@ -1,6 +1,7 @@
 .nav {
   list-style: none;
-  height: 60px;  
+  height: 60px;
+  z-index: 2;
 }
 
 .nav__list {
@@ -9,13 +10,21 @@
   justify-content: flex-end;
   flex-wrap: wrap;
   align-items: center;
+  color: $text-color-light;
+}
+
+.nav__list_dark {
+  color: black;
 }
 
 .nav__item {   
   margin:0 15px;
-  padding:10px 0 10px 0;  
+  padding:10px 0 10px 0;
+  // z-index: 5;
   &_active {
     border-bottom: solid white 2px;
+    // color: $text-color-light;
+    color: inherit;    
   }
 }
 
@@ -29,7 +38,8 @@
   cursor: pointer;
   text-transform: uppercase;
   text-align: center;
-  color: $text-color-light;
+  // color: $text-color-light;
+  color:inherit;
 }
 
 .nav__burger {
@@ -43,6 +53,10 @@
 }
 
 @media (min-width: 768px) and (max-width: 1024px)  {
+  .nav {
+    justify-content: flex-end;
+  }
+
   .nav__item {   
     &_active {
       border-bottom: solid #222222 2px;

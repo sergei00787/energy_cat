@@ -1,0 +1,24 @@
+mixin product(product, quantity, cost)
+    li.product.row.row-cols-lg-4.mt-3.py-2.align-items-center
+      .product__name.col-lg-4.col-md-5.col-sm-12.my-2.text-uppercase= product
+      .product__quantity.col-lg-3.col-md-5.col-6= quantity
+      .product__cost.col-lg-2.col-md-2.col-6= cost
+      .prodact__btn.col-lg-3.col-12.text-uppercase.btn.btn-success.my-lg-0.my-2.py-3 Заказать
+       
+
+section.other-products__wrap
+  .other-products.container.my-5
+    .other-products__title
+      h2.other-products__title-text.title.d-inline-block.p-3 Другие продукты
+    .other-products__body.row.mt-4
+      .products__container.col-lg-8.col-md-12
+        ul.products
+          +product('Сахарозаменитель', '1 упаковка (100г)', '200 Р.')
+          +product('Питьевая вода', '5 литров', '50 Р.')
+          +product('Молоко', '1 литр', '100 Р.')
+          +product('Витамины', '1 упаковка (30г)', '300 Р.')
+      .products__order-all.col-lg-4.col-md-12.container.my-3
+        .order-all__box.mx-3.row.h-100
+          .order-all__gift.col-lg-12.col-md-6.col-12.d-flex.flex-row.justify-content-center.align-items-center
+            img.gift.d-block.h-50.mx-auto.align-items-center(src= "./img/gift.svg.png", alt= "gift icon")
+          .order-all__text.col-lg-12.col-md-6.col-12.d-flex.flex-row.justify-content-center.align-items-center.text-center.text-white.my-sm-3 Закажите всё и получите чехол для кота в подарок!

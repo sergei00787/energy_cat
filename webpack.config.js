@@ -7,6 +7,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
+const fs = require('fs');
 
 
 const isDev = process.env.NODE_ENV === 'development';
@@ -49,14 +50,14 @@ const cssLoaders = (p_exrta) => {
       },
     },
     'css-loader',
-    // {
-    //   loader: 'postcss-loader',
-    //   options: {
-    //       plugins: [
-    //           autoprefixer({})
-    //       ],
-    //   }
-    // },
+    {
+      loader: 'postcss-loader',
+      options: {
+        plugins: [
+          autoprefixer({})
+        ],
+      }
+    },
   ]
 
   if (p_exrta) {
@@ -66,8 +67,26 @@ const cssLoaders = (p_exrta) => {
   return loaders;
 }
 
+const PATHS = {
+  src: path.resolve(__dirname, 'src'),
+  dist: path.resolve(__dirname, 'dist'),
+  assets: 'assets/'
+}
+
+console.log("PATHS.src = " + PATHS.src);
+
+const PAGES_DIR = `${PATHS.src}/pug/pages`;
+const PAGES = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.pug'));
+// const PAGES = fs.readdirSync(PAGES_DIR);
+
+console.log("PAGES_DIR = " + PAGES_DIR);
+
+
+
+
 module.exports = {
   entry: {
+    // app: paths.src,
     main: ['@babel/polyfill', './src/js/index.js']
   },
 
@@ -143,6 +162,15 @@ module.exports = {
           //  isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
           'css-loader',
           {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true,
+              plugins: [
+                autoprefixer({})
+              ],
+            }
+          },
+          {
             loader: 'resolve-url-loader',
             options: {
               sourceMap: true,
@@ -190,6 +218,20 @@ module.exports = {
             }
           },
         ]
+      },
+
+      {
+        test: /\.pug$/,
+        use: [
+          {
+            loader: 'pug-loader',
+            options: {
+              pretty: isDev
+            }
+          }
+          
+        ]
+        // loader: 'pug-loader'
       }
     ]
   },
@@ -206,11 +248,26 @@ module.exports = {
 
     new HtmlWebpackPlugin({
       template: './src/index.html',
-      filename: 'index.html',     
+      filename: 'index.html',
       minify: {
         collapseWhitespace: isProd
       }
     }),
+
+    // new HtmlWebpackPlugin({
+    //   template: `${PAGES_DIR}catalog.pug`,
+    //   // template: './src/pug/pages/catalog.pug',
+    //   filename: 'catalog.html',
+    //   inject:true
+    // }),
+
+    // Automatic creation any html pages (Don't forget to RERUN dev server)
+    // see more: https://github.com/vedees/webpack-template/blob/master/README.md#create-another-html-files
+    // best way to create pages: https://github.com/vedees/webpack-template/blob/master/README.md#third-method-best
+    ...PAGES.map(page => new HtmlWebpackPlugin({
+      template: `${PAGES_DIR}/${page}`,
+      filename: `./${page.replace(/\.pug/, '.html')}`
+    })),
 
     new CopyWebpackPlugin({
       patterns: [

@@ -1,6 +1,8 @@
 .main-info {
   width: 100%;
   height: auto;
+  transform: translateY(-120px);
+  z-index: 0;
 }
 
 .main-info__body {
@@ -44,6 +46,11 @@
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
+
+  .main-info {
+    transform: none;
+  }
+
   .main-info__body {
     flex-direction: column;
     justify-content: flex-start;
@@ -74,6 +81,10 @@
 }
 
 @media (max-width: 768px) {
+  .main-info {
+    transform: none;
+  }
+
   .main-info__body {
     margin-top: 100px;
     position: relative;
