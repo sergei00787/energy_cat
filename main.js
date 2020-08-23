@@ -10242,6 +10242,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/js/catalog.js":
+/*!***************************!*\
+  !*** ./src/js/catalog.js ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
 /***/ "./src/js/index.js":
 /*!*************************!*\
   !*** ./src/js/index.js ***!
@@ -10263,6 +10274,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _nav_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_nav_js__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var _map_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./map.js */ "./src/js/map.js");
 /* harmony import */ var _map_js__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_map_js__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _catalog_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./catalog.js */ "./src/js/catalog.js");
+/* harmony import */ var _catalog_js__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_catalog_js__WEBPACK_IMPORTED_MODULE_9__);
+
 
 
 
